@@ -19,9 +19,11 @@ namespace FirstAPI.Services
         }
         public List<Book> Get() =>
             _books.Find(book => true).ToList();
-        public Book Get(string id) =>
-            _books.Find<Book>(book => book.Id == id).FirstOrDefault();
-        public Book Create(Book book)
+        public Book Get(string id)
+        {
+           return _books.Find<Book>(book => book.Id == id).FirstOrDefault();
+        }
+            public Book Create(Book book)
         {
             _books.InsertOne(book);
             return book;
